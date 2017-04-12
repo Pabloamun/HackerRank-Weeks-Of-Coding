@@ -9,17 +9,20 @@ public class BeautifulWord {
 		String vowels = "aeiouy";
 		boolean flag = false;
 		char index = w.charAt(0);
-		for (int i = 1; i < w.length(); i++) {
-			if (w.charAt(i) == index) {
-				flag = false;
-				break;
-			} else if (vowels.indexOf(index) > 0
-					&& vowels.indexOf(w.charAt(i)) > 0) {
-				flag = false;
-				break;
-			} else {
-				index = w.charAt(i);
-				flag = true;
+		if(w.length() == 1) flag = true;
+		 else {
+			for (int i = 1; i < w.length(); i++) {
+				if (w.charAt(i) == index) {
+					flag = false;
+					break;
+				} else if (vowels.indexOf(index) >= 0
+						&& vowels.indexOf(w.charAt(i)) >= 0) {
+					flag = false;
+					break;
+				} else {
+					index = w.charAt(i);
+					flag = true;
+				}
 			}
 		}
 		String ans = (flag) ? "Yes" : "No";
